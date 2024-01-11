@@ -1,35 +1,30 @@
-use std::io;
-use std::cmp::Ordering;
-use rand::Rng;
+// const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
 
 fn main() {
-    println!("Guess the number!");
+    let mut x = 5;
+    println!("The value of x is: {x}");
+    x = 6;
+    println!("The value of x is: {x}");
 
-    let secret_number = rand::thread_rng().gen_range(1..=100);
+    let y = five();
+    let z = plus_one(100);
+    another_function(z, 'b');
 
-    loop {
-        println!("Please input your guess.");
+    let number = 3;
 
-        let mut guess = String::new();
-
-        io::stdin()
-            .read_line(&mut guess)
-            .expect("Failed to read line");
-
-        let guess: u32 = match guess.trim().parse() {
-            Ok(num) => num,
-            Err(_) => continue,
-        };
-
-        println!("You guessed: {guess}");
-
-        match guess.cmp(&secret_number) {
-            Ordering::Less => println!("Too small!"),
-            Ordering::Greater => println!("Too big!"),
-            Ordering::Equal => {
-                println!("You win!");
-                break;
-            },
-        }
+    if number != 0 {
+        println!("condition was true");
     }
+}
+
+fn another_function(x: i32, unit_label: char) {
+    println!("The value of x is: {x}{unit_label}");
+}
+
+fn five() -> i32 {
+    5
+}
+
+fn plus_one(x: i32) -> i32 {
+    x + 1
 }
