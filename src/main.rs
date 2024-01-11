@@ -9,6 +9,12 @@ fn main() {
     let y = five();
     let z = plus_one(100);
     another_function(z, 'b');
+
+    let number = 3;
+
+    if number != 0 {
+        println!("condition was true");
+    }
 }
 
 fn another_function(x: i32, unit_label: char) {
