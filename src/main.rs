@@ -1,30 +1,35 @@
-// const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
-
 fn main() {
-    let mut x = 5;
-    println!("The value of x is: {x}");
-    x = 6;
-    println!("The value of x is: {x}");
+    // let s1 = gives_ownership();
 
-    let y = five();
-    let z = plus_one(100);
-    another_function(z, 'b');
+    // let s2 = String::from("hello");
 
-    let number = 3;
+    // let s3 = takes_and_gives_back(s2);
 
-    if number != 0 {
-        println!("condition was true");
+    let s4 = String::from("Hello world!");
+
+    let test = first_word(&s4);
+
+    println!("The value of test is {test}");
+}
+
+fn first_word(s: &String) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
     }
+
+    &s[..]
 }
 
-fn another_function(x: i32, unit_label: char) {
-    println!("The value of x is: {x}{unit_label}");
+fn gives_ownership() -> String {
+    let some_string = String::from("yours");
+
+    some_string
 }
 
-fn five() -> i32 {
-    5
-}
-
-fn plus_one(x: i32) -> i32 {
-    x + 1
+fn takes_and_gives_back(a_string: String) -> String {
+    a_string
 }
